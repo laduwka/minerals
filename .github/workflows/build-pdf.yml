@@ -1,0 +1,63 @@
+name: Build PDF catalog
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - "v*"
+      - "catalog-*"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Pandoc
+        run: |
+          curl -fsSL https://github.com/jgm/pandoc/releases/latest/download/pandoc-$(curl -fsSL https://api.github.com/repos/jgm/pandoc/releases/latest | grep -Po '"tag_name":\s*"\K[^"]*')-1-amd64.deb \
+            -o /tmp/pandoc.deb
+          sudo dpkg -i /tmp/pandoc.deb
+          rm /tmp/pandoc.deb
+          pandoc --version | head -1
+
+      - name: Install Typst
+        run: |
+          curl -fsSL https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz \
+            -o /tmp/typst.tar.xz
+          tar -xJf /tmp/typst.tar.xz -C /tmp/
+          sudo mv /tmp/typst-x86_64-unknown-linux-musl/typst /usr/local/bin/typst
+          rm -rf /tmp/typst.tar.xz /tmp/typst-x86_64-unknown-linux-musl
+          typst --version
+
+      - name: Update PDF sources manifest
+        run: sh tools/update-pdf-sources.sh
+
+      - name: Build PDF
+        id: pdf
+        run: |
+          TAG_NAME="${GITHUB_REF_NAME:-dev}"
+          OUTPUT="mineral-catalog-${TAG_NAME}.pdf"
+          chmod +x tools/build-pdf.sh
+          OUTPUT="$OUTPUT" tools/build-pdf.sh "$PWD"
+          echo "pdf_file=${OUTPUT}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mineral-catalog
+          path: ${{ steps.pdf.outputs.pdf_file }}
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.pdf.outputs.pdf_file }}
+          generate_release_notes: true

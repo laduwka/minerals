@@ -1,0 +1,24 @@
+---
+# Pandoc defaults file for PDF catalog generation (Typst backend)
+# Usage: pandoc --defaults tools/pdf-metadata.yml --pdf-engine=typst -o catalog.pdf <inputs>
+
+metadata:
+  title: "Mineral Collection Catalog"
+  author: "laduwka"
+  date: ""
+  lang: en
+
+from: markdown+yaml_metadata_block+pipe_tables+raw_attribute
+table-of-contents: true
+toc-depth: 2
+number-sections: false
+standalone: true
+
+variables:
+  template: tools/template.typ
+  margin:
+    x: 2.5cm
+    y: 2.5cm
+  papersize: a4
+  page-numbering: "1"
+  linkcolor: "1e40af"

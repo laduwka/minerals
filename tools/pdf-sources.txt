@@ -1,0 +1,35 @@
+# Ordered list of Markdown sources for Pandoc
+# Lines starting with # or blank are ignored.
+
+index.md
+
+tools/pagebreak.md
+taxonomy/classes.md
+tools/pagebreak.md
+taxonomy/groups.md
+tools/pagebreak.md
+taxonomy/glossary.md
+
+# Minerals (alphabetical)
+
+minerals/agate.md
+minerals/amber.md
+minerals/aventurine.md
+minerals/bismuth.md
+minerals/bornite.md
+minerals/brucite.md
+minerals/calcite.md
+minerals/chalcopyrite.md
+minerals/fluorite.md
+minerals/gypsum.md
+minerals/jasper.md
+minerals/kyanite.md
+minerals/labradorite.md
+minerals/larimar.md
+minerals/lepidolite.md
+minerals/malachite.md
+minerals/obsidian.md
+minerals/pyrite.md
+minerals/quartz.md
+minerals/tektite.md
+minerals/tigers-eye.md

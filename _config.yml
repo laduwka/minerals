@@ -1,0 +1,23 @@
+title: Mineral Collection Catalog
+description: Personal mineral and rock collection
+baseurl: "/minerals"
+url: "https://laduwka.github.io"
+markdown: kramdown
+
+exclude:
+  - README.md
+  - tools/
+  - build/
+  - "minerals/_template.md"
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - Dockerfile
+  - "*.tex"
+
+defaults:
+  - scope:
+      path: "minerals"
+      type: "pages"
+    values:
+      layout: mineral

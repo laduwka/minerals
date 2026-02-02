@@ -1,0 +1,83 @@
+---
+layout: default
+---
+<article class="mineral-card">
+  <h1>{{ page.name }}</h1>
+
+  <table class="properties">
+    {% if page.formula %}
+    <tr><th>Formula</th><td>{{ page.formula }}</td></tr>
+    {% endif %}
+    {% if page.mineral_class %}
+    <tr><th>Class</th><td>{{ page.mineral_class }}</td></tr>
+    {% endif %}
+    {% if page.group %}
+    <tr><th>Group</th><td>{{ page.group }}</td></tr>
+    {% endif %}
+    {% if page.crystal_system %}
+    <tr><th>Crystal system</th><td>{{ page.crystal_system }}</td></tr>
+    {% endif %}
+    {% if page.hardness_mohs %}
+    <tr><th>Hardness (Mohs)</th><td>{{ page.hardness_mohs }}</td></tr>
+    {% endif %}
+    {% if page.color %}
+    <tr><th>Color</th><td>{{ page.color }}</td></tr>
+    {% endif %}
+    {% if page.luster %}
+    <tr><th>Luster</th><td>{{ page.luster }}</td></tr>
+    {% endif %}
+    {% if page.locality %}
+    <tr><th>Locality</th><td>{{ page.locality }}</td></tr>
+    {% endif %}
+    {% if page.collection_date %}
+    <tr><th>Collection date</th><td>{{ page.collection_date }}</td></tr>
+    {% endif %}
+  </table>
+
+  {% if page.tags %}
+  <div class="tags">
+    {% for tag in page.tags %}
+    <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if page.images.size > 0 %}
+  <div class="mineral-gallery">
+    {% for img in page.images %}
+    <figure>
+      <img src="{{ '/images/' | append: page.id | append: '/' | append: img | relative_url }}"
+           alt="{{ page.name }}"
+           loading="lazy">
+    </figure>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if page.varieties %}
+  <h2>Varieties</h2>
+  {% for variety in page.varieties %}
+  <section class="variety">
+    <h3>{{ variety.name }}</h3>
+    {% if variety.color %}
+    <p class="variety-color">Color: {{ variety.color }}</p>
+    {% endif %}
+    {% if variety.images.size > 0 %}
+    <div class="mineral-gallery">
+      {% for img in variety.images %}
+      <figure>
+        <img src="{{ '/images/' | append: page.id | append: '/' | append: img | relative_url }}"
+             alt="{{ variety.name }}"
+             loading="lazy">
+      </figure>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </section>
+  {% endfor %}
+  {% endif %}
+
+  <div class="mineral-description">
+    {{ content }}
+  </div>
+</article>

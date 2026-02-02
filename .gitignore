@@ -1,0 +1,49 @@
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.bundle/
+vendor/
+build/
+_build/
+\.claude/
+*.pdf
+.DS_Store
+Gemfile.lock
+# OS-specific junk
+.AppleDouble
+.LSOverride
+Icon?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors/IDEs
+.vscode/
+.idea/
+*.iml
+*~
+*.swp
+*.swo
+.#*
+.nfs*
+
+# Node (in case of local tooling)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Generic caches/temp
+tmp/
+.cache/
+
+# Build artifacts
+*.tex
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv

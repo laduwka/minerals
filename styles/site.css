@@ -1,0 +1,187 @@
+/* Reset & base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #fafafa;
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Navigation */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+.site-nav .nav-logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.site-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.25rem;
+}
+
+.site-nav a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Content */
+.content { padding-bottom: 3rem; }
+
+h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+h2 { font-size: 1.4rem; margin: 1.8rem 0 0.8rem; }
+h3 { font-size: 1.15rem; margin: 1.4rem 0 0.6rem; }
+
+p { margin-bottom: 1rem; }
+a { color: #2563eb; }
+
+ul, ol { margin: 0 0 1rem 1.5rem; }
+
+/* Mineral properties table */
+.properties {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.properties th,
+.properties td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.properties th {
+  width: 10rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1rem 0;
+}
+
+.tag {
+  display: inline-block;
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* Mineral photo gallery */
+.mineral-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.mineral-gallery figure {
+  margin: 0;
+}
+
+.mineral-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+}
+
+/* Variety sections */
+.variety {
+  margin: 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.variety:last-child {
+  border-bottom: none;
+}
+
+.variety-color {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Mineral description */
+.mineral-description { margin-top: 1.5rem; }
+
+/* Mineral index list */
+.mineral-index {
+  list-style: none;
+  margin-left: 0;
+}
+
+.mineral-index li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid #ddd;
+  padding: 1.5rem 0;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Tables (general) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+th { font-weight: 600; }
+
+/* Definition lists for glossary */
+dt { font-weight: 600; margin-top: 1rem; }
+dd { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+
+/* Print */
+@media print {
+  .site-nav, .site-footer { display: none; }
+  body { max-width: none; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .properties th { width: auto; }
+}
