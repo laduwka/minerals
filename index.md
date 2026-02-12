@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Home
+page_scripts: [search]
 ---
 
 # Mineral Collection Catalog
@@ -15,35 +16,23 @@ A personal catalog of minerals and rocks, organized by mineralogical classificat
 
 ## Mineral index
 
-| Mineral | Class | Formula |
-|---------|-------|---------|
-| [Agate](minerals/agate) | Silicates | SiO₂ |
-| [Amber](minerals/amber) | Organic | C₁₀H₁₆O |
-| [Aventurine](minerals/aventurine) | Silicates | SiO₂ |
-| [Bismuth](minerals/bismuth) | Native elements | Bi |
-| [Bornite](minerals/bornite) | Sulfides | Cu₅FeS₄ |
-| [Brucite](minerals/brucite) | Hydroxides | Mg(OH)₂ |
-| [Calcite](minerals/calcite) | Carbonates | CaCO₃ |
-| [Chalcopyrite](minerals/chalcopyrite) | Sulfides | CuFeS₂ |
-| [Fluorite](minerals/fluorite) | Halides | CaF₂ |
-| [Gypsum](minerals/gypsum) | Sulfates | CaSO₄·2H₂O |
-| [Jasper](minerals/jasper) | Silicates | SiO₂ |
-| [Kyanite](minerals/kyanite) | Silicates | Al₂SiO₅ |
-| [Labradorite](minerals/labradorite) | Silicates | (Ca,Na)(Si,Al)₄O₈ |
-| [Larimar](minerals/larimar) | Silicates | NaCa₂Si₃O₈(OH) |
-| [Lepidolite](minerals/lepidolite) | Silicates | K(Li,Al)₃(Si,Al)₄O₁₀(F,OH)₂ |
-| [Malachite](minerals/malachite) | Carbonates | Cu₂(CO₃)(OH)₂ |
-| [Obsidian](minerals/obsidian) | Volcanic glass | SiO₂ |
-| [Pyrite](minerals/pyrite) | Sulfides | FeS₂ |
-| [Quartz](minerals/quartz) | Silicates | SiO₂ |
-| [Tektite](minerals/tektite) | Impact glass | SiO₂-rich glass |
-| [Tiger's Eye](minerals/tigers-eye) | Silicates | SiO₂ |
+<div class="search-bar">
+  <input type="text" id="mineral-search" placeholder="Search minerals by name, class, or tags...">
+</div>
 
-## Legend
+{% assign minerals = site.pages | where: "layout", "mineral" | sort: "name" %}
+{% assign classes = minerals | map: "mineral_class" | uniq | sort %}
 
-| Symbol | Meaning |
-|--------|---------|
-| **H** | Hardness on the Mohs scale (1–10) |
-| **Crystal system** | Symmetry group of the crystal lattice |
-| **Luster** | How the surface reflects light (vitreous, metallic, etc.) |
-| **Locality** | Where the specimen was collected |
+<div class="filter-chips">
+  <button class="filter-chip active" data-filter="all">All</button>
+  {% for cls in classes %}
+  <button class="filter-chip" data-filter="{{ cls | downcase }}">{{ cls }}</button>
+  {% endfor %}
+</div>
+
+<div class="card-grid" id="mineral-grid">
+  {% for mineral in minerals %}
+    {% include mineral-card.html mineral=mineral %}
+  {% endfor %}
+  <p class="no-results" id="no-results" hidden>No minerals match your search.</p>
+</div>

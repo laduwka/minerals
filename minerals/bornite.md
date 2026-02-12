@@ -2,6 +2,7 @@
 layout: mineral
 id: bornite
 name: Bornite
+title: Bornite
 formula: "Cu₅FeS₄"
 mineral_class: Sulfides
 group: Simple sulfides

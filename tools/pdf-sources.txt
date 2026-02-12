@@ -1,7 +1,7 @@
 # Ordered list of Markdown sources for Pandoc
 # Lines starting with # or blank are ignored.
 
-index.md
+tools/pdf-cover.md
 
 tools/pagebreak.md
 taxonomy/classes.md

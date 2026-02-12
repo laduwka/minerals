@@ -2,6 +2,7 @@
 layout: mineral
 id: jasper
 name: Jasper
+title: Jasper
 formula: "SiO₂"
 mineral_class: Silicates
 group: Tectosilicates

@@ -1,103 +1,355 @@
-/* Reset & base */
+/* ===== Custom Properties ===== */
+:root {
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f8fafc;
+  --color-text: #1a1a1a;
+  --color-text-muted: #64748b;
+  --color-accent: #2563eb;
+  --color-accent-light: #dbeafe;
+  --color-accent-dark: #1d4ed8;
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Layout */
+  --max-width: 72rem;
+  --nav-height: 3.5rem;
+  --sidebar-width: 280px;
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ===== Reset & Base ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
   line-height: 1.6;
-  color: #1a1a1a;
-  background: #fafafa;
-  max-width: 52rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  color: var(--color-text);
+  background: var(--color-bg);
 }
 
-/* Navigation */
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--color-accent); }
+a:hover { color: var(--color-accent-dark); }
+
+/* ===== Navigation ===== */
 .site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-inner {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 2rem;
+  gap: var(--space-xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  height: var(--nav-height);
 }
 
 .site-nav .nav-logo {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   text-decoration: none;
-  color: #1a1a1a;
+  color: var(--color-text);
+  white-space: nowrap;
 }
 
 .site-nav ul {
   display: flex;
   list-style: none;
-  gap: 1.25rem;
+  gap: var(--space-lg);
 }
 
 .site-nav a {
-  color: #2563eb;
+  color: var(--color-text-muted);
   text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: var(--space-sm) 0;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .site-nav a:hover {
-  text-decoration: underline;
+  color: var(--color-accent);
 }
 
-/* Content */
-.content { padding-bottom: 3rem; }
+.site-nav a.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
 
-h1 { font-size: 1.8rem; margin-bottom: 1rem; }
-h2 { font-size: 1.4rem; margin: 1.8rem 0 0.8rem; }
-h3 { font-size: 1.15rem; margin: 1.4rem 0 0.6rem; }
+/* ===== Layout ===== */
+.content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+}
 
-p { margin-bottom: 1rem; }
-a { color: #2563eb; }
+/* ===== Typography ===== */
+h1 { font-size: var(--text-3xl); font-weight: 700; margin-bottom: var(--space-md); line-height: 1.3; }
+h2 { font-size: var(--text-2xl); font-weight: 600; margin: var(--space-2xl) 0 var(--space-md); }
+h3 { font-size: var(--text-xl); font-weight: 600; margin: var(--space-xl) 0 var(--space-sm); }
 
-ul, ol { margin: 0 0 1rem 1.5rem; }
+p { margin-bottom: var(--space-md); }
+ul, ol { margin: 0 0 var(--space-md) var(--space-lg); }
 
-/* Mineral properties table */
-.properties {
+/* ===== Search & Filter ===== */
+.search-bar {
+  position: relative;
+  margin-bottom: var(--space-md);
+}
+
+.search-bar input {
   width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
+  padding: 0.625rem 1rem;
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.properties th,
-.properties td {
-  text-align: left;
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid #e5e5e5;
+.search-bar input::placeholder {
+  color: var(--color-text-muted);
 }
 
-.properties th {
-  width: 10rem;
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.85rem;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.filter-chip.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ===== Card Grid ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-lg);
+}
+
+.mineral-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.mineral-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: inherit;
+}
+
+.mineral-card .card-thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+.mineral-card .card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.mineral-card:hover .card-thumb img {
+  transform: scale(1.04);
+}
+
+.mineral-card .card-body {
+  padding: var(--space-md);
+}
+
+.mineral-card .card-title {
+  font-size: var(--text-lg);
   font-weight: 600;
-  color: #555;
+  margin-bottom: var(--space-xs);
 }
 
-/* Tags */
+.mineral-card .card-formula {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-sm);
+}
+
+.mineral-card .card-class {
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--color-text-muted);
+}
+
+/* ===== Mineral Detail Layout ===== */
+.mineral-layout {
+  display: grid;
+  grid-template-columns: 1fr var(--sidebar-width);
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.mineral-main {}
+
+.mineral-sidebar {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-lg));
+}
+
+/* Properties Panel */
+.properties-panel {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.properties-panel h2 {
+  font-size: var(--text-lg);
+  margin: 0 0 var(--space-md);
+}
+
+.properties-panel dl {
+  margin: 0;
+}
+
+.property-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.property-row:last-child {
+  border-bottom: none;
+}
+
+.property-row dt {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.property-row dd {
+  font-size: var(--text-sm);
+  text-align: right;
+  margin: 0;
+}
+
+/* ===== Tags ===== */
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin: 1rem 0;
+  margin: var(--space-sm) 0 var(--space-md);
 }
 
 .tag {
   display: inline-block;
-  background: #e0e7ff;
-  color: #3730a3;
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  padding: 0.15rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 500;
 }
 
-/* Mineral photo gallery */
+/* ===== Mineral Gallery ===== */
 .mineral-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
 }
 
 .mineral-gallery figure {
@@ -107,15 +359,21 @@ ul, ol { margin: 0 0 1rem 1.5rem; }
 .mineral-gallery img {
   width: 100%;
   height: auto;
-  border-radius: 4px;
-  border: 1px solid #e5e5e5;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-/* Variety sections */
+.mineral-gallery img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== Variety Sections ===== */
 .variety {
-  margin: 1.5rem 0;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #eee;
+  margin: var(--space-lg) 0;
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .variety:last-child {
@@ -123,65 +381,159 @@ ul, ol { margin: 0 0 1rem 1.5rem; }
 }
 
 .variety-color {
-  color: #555;
+  color: var(--color-text-muted);
   font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-sm);
 }
 
-/* Mineral description */
-.mineral-description { margin-top: 1.5rem; }
-
-/* Mineral index list */
-.mineral-index {
-  list-style: none;
-  margin-left: 0;
+/* ===== Mineral Description ===== */
+.mineral-description {
+  margin-top: var(--space-xl);
 }
 
-.mineral-index li {
-  padding: 0.4rem 0;
-  border-bottom: 1px solid #eee;
+/* ===== Lightbox ===== */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
 }
 
-/* Footer */
-.site-footer {
-  border-top: 1px solid #ddd;
-  padding: 1.5rem 0;
-  color: #888;
-  font-size: 0.9rem;
+.lightbox-overlay.open {
+  display: flex;
 }
 
-/* Tables (general) */
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  object-fit: contain;
+}
+
+.lightbox-btn {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-close {
+  top: var(--space-lg);
+  right: var(--space-lg);
+}
+
+.lightbox-prev {
+  left: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  right: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ===== Tables (general) ===== */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
+  margin: var(--space-md) 0;
 }
 
 th, td {
   text-align: left;
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid #e5e5e5;
+  padding: var(--space-sm) 0.75rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
 th { font-weight: 600; }
 
-/* Definition lists for glossary */
-dt { font-weight: 600; margin-top: 1rem; }
-dd { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+/* ===== Definition Lists (glossary) ===== */
+dt { font-weight: 600; margin-top: var(--space-md); }
+dd { margin-left: var(--space-lg); margin-bottom: var(--space-sm); }
 
-/* Print */
-@media print {
-  .site-nav, .site-footer { display: none; }
-  body { max-width: none; }
+/* ===== Footer ===== */
+.site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-lg);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .site-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer .footer-tagline {
+  margin-top: var(--space-xs);
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* ===== Print ===== */
+@media print {
+  .site-nav,
+  .site-footer,
+  .search-bar,
+  .filter-chips,
+  .lightbox-overlay { display: none !important; }
+  body { max-width: none; }
+  .content { padding: 0; }
+  .mineral-layout { display: block; }
+  .mineral-sidebar { position: static; }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .mineral-layout {
+    grid-template-columns: 1fr;
   }
 
-  .properties th { width: auto; }
+  .mineral-sidebar {
+    position: static;
+    order: -1;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: var(--space-sm) var(--space-lg);
+    gap: var(--space-sm);
+  }
+
+  .site-nav ul {
+    gap: var(--space-md);
+  }
+
+  h1 { font-size: var(--text-2xl); }
+  h2 { font-size: var(--text-xl); }
 }

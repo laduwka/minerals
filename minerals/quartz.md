@@ -2,6 +2,7 @@
 layout: mineral
 id: quartz
 name: Quartz
+title: Quartz
 formula: "SiO₂"
 mineral_class: Silicates
 group: Tectosilicates

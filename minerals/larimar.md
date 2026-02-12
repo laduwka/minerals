@@ -2,6 +2,7 @@
 layout: mineral
 id: larimar
 name: Larimar
+title: Larimar
 formula: "NaCa₂Si₃O₈(OH)"
 mineral_class: Silicates
 group: Inosilicates

@@ -2,6 +2,7 @@
 layout: mineral
 id: tigers-eye
 name: Tiger's Eye
+title: Tiger's Eye
 formula: "SiO₂"
 mineral_class: Silicates
 group: Tectosilicates
