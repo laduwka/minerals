@@ -2,6 +2,7 @@
 layout: mineral
 id: calcite
 name: Calcite
+title: Calcite
 formula: "CaCO₃"
 mineral_class: Carbonates
 group: Calcite group

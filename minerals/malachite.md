@@ -2,6 +2,7 @@
 layout: mineral
 id: malachite
 name: Malachite
+title: Malachite
 formula: "Cu₂(CO₃)(OH)₂"
 mineral_class: Carbonates
 group: Hydrous carbonates

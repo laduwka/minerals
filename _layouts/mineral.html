@@ -1,38 +1,8 @@
 ---
 layout: default
 ---
-<article class="mineral-card">
-  <h1>{{ page.name }}</h1>
-
-  <table class="properties">
-    {% if page.formula %}
-    <tr><th>Formula</th><td>{{ page.formula }}</td></tr>
-    {% endif %}
-    {% if page.mineral_class %}
-    <tr><th>Class</th><td>{{ page.mineral_class }}</td></tr>
-    {% endif %}
-    {% if page.group %}
-    <tr><th>Group</th><td>{{ page.group }}</td></tr>
-    {% endif %}
-    {% if page.crystal_system %}
-    <tr><th>Crystal system</th><td>{{ page.crystal_system }}</td></tr>
-    {% endif %}
-    {% if page.hardness_mohs %}
-    <tr><th>Hardness (Mohs)</th><td>{{ page.hardness_mohs }}</td></tr>
-    {% endif %}
-    {% if page.color %}
-    <tr><th>Color</th><td>{{ page.color }}</td></tr>
-    {% endif %}
-    {% if page.luster %}
-    <tr><th>Luster</th><td>{{ page.luster }}</td></tr>
-    {% endif %}
-    {% if page.locality %}
-    <tr><th>Locality</th><td>{{ page.locality }}</td></tr>
-    {% endif %}
-    {% if page.collection_date %}
-    <tr><th>Collection date</th><td>{{ page.collection_date }}</td></tr>
-    {% endif %}
-  </table>
+<article>
+  <h1>{{ page.title }}</h1>
 
   {% if page.tags %}
   <div class="tags">
@@ -42,42 +12,112 @@ layout: default
   </div>
   {% endif %}
 
-  {% if page.images.size > 0 %}
-  <div class="mineral-gallery">
-    {% for img in page.images %}
-    <figure>
-      <img src="{{ '/images/' | append: page.id | append: '/' | append: img | relative_url }}"
-           alt="{{ page.name }}"
-           loading="lazy">
-    </figure>
-    {% endfor %}
-  </div>
-  {% endif %}
+  <div class="mineral-layout">
+    <div class="mineral-main">
 
-  {% if page.varieties %}
-  <h2>Varieties</h2>
-  {% for variety in page.varieties %}
-  <section class="variety">
-    <h3>{{ variety.name }}</h3>
-    {% if variety.color %}
-    <p class="variety-color">Color: {{ variety.color }}</p>
-    {% endif %}
-    {% if variety.images.size > 0 %}
-    <div class="mineral-gallery">
-      {% for img in variety.images %}
-      <figure>
-        <img src="{{ '/images/' | append: page.id | append: '/' | append: img | relative_url }}"
-             alt="{{ variety.name }}"
-             loading="lazy">
-      </figure>
+      {% if page.images.size > 0 %}
+      <div class="mineral-gallery">
+        {% for img in page.images %}
+        <figure>
+          <img src="{{ '/images/' | append: page.id | append: '/' | append: img | relative_url }}"
+               alt="{{ page.title }}"
+               loading="lazy">
+        </figure>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if page.varieties %}
+      <h2>Varieties</h2>
+      {% for variety in page.varieties %}
+      <section class="variety">
+        <h3>{{ variety.name }}</h3>
+        {% if variety.color %}
+        <p class="variety-color">Color: {{ variety.color }}</p>
+        {% endif %}
+        {% if variety.images.size > 0 %}
+        <div class="mineral-gallery">
+          {% for img in variety.images %}
+          <figure>
+            <img src="{{ '/images/' | append: page.id | append: '/' | append: img | relative_url }}"
+                 alt="{{ variety.name }}"
+                 loading="lazy">
+          </figure>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </section>
       {% endfor %}
-    </div>
-    {% endif %}
-  </section>
-  {% endfor %}
-  {% endif %}
+      {% endif %}
 
-  <div class="mineral-description">
-    {{ content }}
+      <div class="mineral-description">
+        {{ content }}
+      </div>
+
+    </div>
+
+    <aside class="mineral-sidebar">
+      <div class="properties-panel">
+        <h2>Properties</h2>
+        <dl>
+          {% if page.formula %}
+          <div class="property-row">
+            <dt>Formula</dt>
+            <dd>{{ page.formula }}</dd>
+          </div>
+          {% endif %}
+          {% if page.mineral_class %}
+          <div class="property-row">
+            <dt>Class</dt>
+            <dd>{{ page.mineral_class }}</dd>
+          </div>
+          {% endif %}
+          {% if page.group %}
+          <div class="property-row">
+            <dt>Group</dt>
+            <dd>{{ page.group }}</dd>
+          </div>
+          {% endif %}
+          {% if page.crystal_system %}
+          <div class="property-row">
+            <dt>Crystal system</dt>
+            <dd>{{ page.crystal_system }}</dd>
+          </div>
+          {% endif %}
+          {% if page.hardness_mohs %}
+          <div class="property-row">
+            <dt>Hardness</dt>
+            <dd>{{ page.hardness_mohs }}</dd>
+          </div>
+          {% endif %}
+          {% if page.color %}
+          <div class="property-row">
+            <dt>Color</dt>
+            <dd>{{ page.color }}</dd>
+          </div>
+          {% endif %}
+          {% if page.luster %}
+          <div class="property-row">
+            <dt>Luster</dt>
+            <dd>{{ page.luster }}</dd>
+          </div>
+          {% endif %}
+          {% if page.locality and page.locality != "" %}
+          <div class="property-row">
+            <dt>Locality</dt>
+            <dd>{{ page.locality }}</dd>
+          </div>
+          {% endif %}
+          {% if page.collection_date %}
+          <div class="property-row">
+            <dt>Collected</dt>
+            <dd>{{ page.collection_date }}</dd>
+          </div>
+          {% endif %}
+        </dl>
+      </div>
+    </aside>
   </div>
+
+  {% include lightbox.html %}
 </article>

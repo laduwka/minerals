@@ -2,6 +2,7 @@
 layout: mineral
 id: labradorite
 name: Labradorite
+title: Labradorite
 formula: "(Ca,Na)(Si,Al)₄O₈"
 mineral_class: Silicates
 group: Tectosilicates

@@ -2,6 +2,7 @@
 layout: mineral
 id: pyrite
 name: Pyrite
+title: Pyrite
 formula: "FeS₂"
 mineral_class: Sulfides
 group: Simple sulfides

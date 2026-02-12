@@ -2,6 +2,7 @@
 layout: mineral
 id: tektite
 name: Tektite
+title: Tektite
 formula: "SiO₂-rich glass"
 mineral_class: Impact glass
 group: Mineraloids

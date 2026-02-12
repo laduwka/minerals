@@ -2,6 +2,7 @@
 layout: mineral
 id: brucite
 name: Brucite
+title: Brucite
 formula: "Mg(OH)₂"
 mineral_class: Hydroxides
 group: Hydroxides

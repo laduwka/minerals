@@ -2,6 +2,7 @@
 layout: mineral
 id: bismuth
 name: Bismuth
+title: Bismuth
 formula: "Bi"
 mineral_class: Native elements
 group: Semimetals

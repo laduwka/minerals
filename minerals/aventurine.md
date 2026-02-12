@@ -2,6 +2,7 @@
 layout: mineral
 id: aventurine
 name: Aventurine
+title: Aventurine
 formula: "SiO₂"
 mineral_class: Silicates
 group: Tectosilicates

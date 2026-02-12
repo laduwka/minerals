@@ -1,0 +1,28 @@
+{% assign mineral = include.mineral %}
+{% assign thumb = nil %}
+{% if mineral.images and mineral.images.size > 0 %}
+  {% assign thumb = mineral.images[0] %}
+{% elsif mineral.varieties and mineral.varieties.size > 0 and mineral.varieties[0].images and mineral.varieties[0].images.size > 0 %}
+  {% assign thumb = mineral.varieties[0].images[0] %}
+{% endif %}
+
+<a href="{{ mineral.url | relative_url }}" class="mineral-card"
+   data-name="{{ mineral.title | downcase }}"
+   data-class="{{ mineral.mineral_class | downcase }}"
+   data-tags="{% if mineral.tags %}{{ mineral.tags | join: ' ' | downcase }}{% endif %}">
+  <div class="card-thumb">
+    {% if thumb %}
+    <img src="{{ '/images/' | append: mineral.id | append: '/' | append: thumb | relative_url }}"
+         alt="{{ mineral.title }}" loading="lazy">
+    {% endif %}
+  </div>
+  <div class="card-body">
+    <div class="card-title">{{ mineral.title }}</div>
+    {% if mineral.formula %}
+    <div class="card-formula">{{ mineral.formula }}</div>
+    {% endif %}
+    {% if mineral.mineral_class %}
+    <div class="card-class">{{ mineral.mineral_class }}</div>
+    {% endif %}
+  </div>
+</a>

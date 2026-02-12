@@ -2,6 +2,7 @@
 layout: mineral
 id: chalcopyrite
 name: Chalcopyrite
+title: Chalcopyrite
 formula: "CuFeS₂"
 mineral_class: Sulfides
 group: Simple sulfides

@@ -2,6 +2,7 @@
 layout: mineral
 id: kyanite
 name: Kyanite
+title: Kyanite
 formula: "Al₂SiO₅"
 mineral_class: Silicates
 group: Nesosilicates

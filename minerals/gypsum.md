@@ -2,6 +2,7 @@
 layout: mineral
 id: gypsum
 name: Gypsum
+title: Gypsum
 formula: "CaSO₄·2H₂O"
 mineral_class: Sulfates
 group: Sulfates

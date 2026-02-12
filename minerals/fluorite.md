@@ -2,6 +2,7 @@
 layout: mineral
 id: fluorite
 name: Fluorite
+title: Fluorite
 formula: "CaF₂"
 mineral_class: Halides
 group: Halides

@@ -2,6 +2,7 @@
 layout: mineral
 id: lepidolite
 name: Lepidolite
+title: Lepidolite
 formula: "K(Li,Al)₃(Si,Al)₄O₁₀(F,OH)₂"
 mineral_class: Silicates
 group: Phyllosilicates

@@ -2,6 +2,7 @@
 layout: mineral
 id: agate
 name: Agate
+title: Agate
 formula: "SiO₂"
 mineral_class: Silicates
 group: Tectosilicates

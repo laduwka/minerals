@@ -2,6 +2,7 @@
 layout: mineral
 id: obsidian
 name: Obsidian
+title: Obsidian
 formula: "SiO₂ (~70–75%)"
 mineral_class: Volcanic glass
 group: Mineraloids

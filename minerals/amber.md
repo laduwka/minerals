@@ -2,6 +2,7 @@
 layout: mineral
 id: amber
 name: Amber
+title: Amber
 formula: "C₁₀H₁₆O (approximate)"
 mineral_class: Organic
 group: Fossil resins
